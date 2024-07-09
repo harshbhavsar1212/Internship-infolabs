@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function check(form) {
+            var ucnt = form.cnt.value;
+            async function load() {
+                let url = "http://universities.hipolabs.com/search?country=" + ucnt;
+                let obj = await (await fetch(url)).json();
+
+                for (var i = 0; i < obj.length; i++) {
+                    document.getElementById('msg').innerHTML = "<table border='1'><tr><td>"+(i+1)+"</td><td>"+obj[i]["name"]+"</td></tr></table > ";
+                }
+            }
+            load();
+        }
+    </script>
+
+    <form>
+        Country Name : <input type="text" name="cnt">
+        <input type="Submit" onclick="check(this.form); return false">
+    </form>
+
+    <p id="msg"></p>
+</body>
+
+</html>

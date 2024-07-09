@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function check(form){
+            var usn = form.sc.value;
+            async function load(){
+                let url = "https://isro.vercel.app/api/spacecrafts";
+                let obj = await(await fetch(url)).json();
+
+                for(var i = 0; i < obj["spacecrafts"].length; i++){
+                    if(usn == obj["spacecrafts"][i]["name"]){
+                        document.getElementById('msg').innerHTML = "DATA FOUND";
+                        break;
+                    }
+                    else{
+                        document.getElementById('msg').innerHTML = "DATA NOT FOUND";
+                    }
+                }
+            }
+            load();
+        }
+    </script>
+
+    <form>
+        Spacecraft Name : <input type="text" name="sc">
+        <input type="Submit" onclick="check(this.form); return false;"> 
+    </form>
+    <p id="msg"></p>
+</body>
+</html>

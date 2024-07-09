@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mutual Funds</title>
+</head>
+<body>
+    <script>
+        function check(form){
+            var ucode = form.sch.value;
+            async function load(){
+                let url = "https://api.mfapi.in/mf";
+                let obj = await(await fetch(url)).json();
+
+                for(var i =0; i<obj.length; i++){
+                    if(ucode == obj[i]["schemeCode"]){
+                        document.getElementById('msg').innerHTML = obj[i]["schemeName"];
+                        break;
+                    }
+                    else{
+                        document.getElementById('msg').innerHTML = "Data Not Found";
+                    }
+                }
+            }
+            load();
+        }
+    </script>
+
+    <form>
+        Schemecode : <input type="text" name="sch"> 
+        <input type="Submit" onclick="check(this.form); return false;">
+    </form>
+    <p id="msg"></p>
+</body>
+</html>
