@@ -1,47 +1,24 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Even or Odd Checker</title>
-
     <script>
-
         const checkEvenOdd = (number) => {
-
             if (number % 2 === 0) {
-
                 alert("${number} is even");
-
             } else {
-
                 alert('${number} is odd.');
-
             }
-
         };
-
     </script>
-
 </head>
-
 <body>
-
     <h2>Enter a Number to Check if it's Even or Odd:</h2>
-
     <form onsubmit="event.preventDefault(); checkEvenOdd (Number(document.getElementById('number').value));">
-
         <input type="number" id="number" required>
-
         <button type="submit">Check</button>
-
     </form>
-
 </body>
-
 </html>

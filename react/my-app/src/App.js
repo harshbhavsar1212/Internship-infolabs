@@ -8,7 +8,7 @@ import { ButtonGroup, Button, Pagination, Breadcrumb, Overlay, Toast} from 'reac
 function App() {
   return (
     <div className="App">
-      <h1> hello to kaise he aap log </h1>
+      <h1> Hello</h1>
     </div>
   );
 }
